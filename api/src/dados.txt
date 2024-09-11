@@ -17,11 +17,3 @@ fs.readFile('exemplo.txt', 'utf8', (erro, dados) => {
   }
   console.log('Conteúdo do arquivo:', dados);
 });
-// Escreve o conteúdo em um arquivo de forma assíncrona
-fs.writeFile('exemplo.txt', 'Este é o novo conteúdo do arquivo', 'utf8', (erro) => {
-	if (erro) {
-		console.error('Erro ao escrever no arquivo:', erro);
-		return;
-	}
-	console.log('Conteúdo escrito com sucesso no arquivo!');
-});

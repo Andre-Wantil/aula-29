@@ -2,7 +2,7 @@ const express = require("express");
 const fsp = require("fs/promises");
 const path = require("path");
 
-const caminhoArquivo = path.join(__dirname, "dadoas.txt");
+const caminhoArquivo = path.join(__dirname, "dados.txt");
 const servidor = express();
 
 servidor.use(express.json());
@@ -45,6 +45,8 @@ ${conteudo}`;
     } catch (error) {
       if (error.code === "ENOENT") {
         res.status(404).json({ error: "Não encontrou o arquivo" });
+      } else if (res.status(400)) {
+        res.status(400).json({ error: "Sintaxe incorreta" });
       }
 
       res.status(500).json({ error: "Algo de errado aconteceu", detalhes: error });
@@ -55,6 +57,8 @@ ${conteudo}`;
   } catch (error) {
     if (error.code === "ENOENT") {
       res.status(404).json({ error: "Não encontrou o arquivo" });
+    } else if (res.status(400)) {
+      res.status(400).json({ error: "Sintaxe incorreta" });
     }
 
     res.status(500).json({ message: "Algo de errado aconteceu", detalhes: error });
